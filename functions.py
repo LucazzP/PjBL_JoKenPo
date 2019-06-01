@@ -63,3 +63,6 @@ def jogoTipo3():
     print('Escolha do Computador: ' + tipoJogadas[jogadaComputador - 1] + '\n')
 
     interface.ganhador(escolhas, 3)
+
+def jogoTipo4():
+    lala = 1
