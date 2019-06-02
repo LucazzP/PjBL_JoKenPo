@@ -3,7 +3,6 @@ from random import Random
 import interface
 
 escolhas = []
-statusJogada = ['Empate', 'Jogador 1', 'Jogador 2']
 tipoJogadas = ['Pedra', 'Papel', 'Tesoura']
 
 def avaliarJogada(escolhas):
@@ -40,8 +39,6 @@ def jogoTipo2():
 
     escolhas.insert(0, int(input('Escolha a jogada do Jogador 1: \n')))
 
-    interface.escolhaJogada()
-
     jogadaComputador = Random.randint(Random(), 1, 3)
     escolhas.insert(1, jogadaComputador)
     print('Escolha do Computador: ' + tipoJogadas[jogadaComputador - 1] + '\n')
@@ -50,17 +47,13 @@ def jogoTipo2():
 
 
 def jogoTipo3():
-    interface.escolhaJogada()
-
     jogadaComputador = Random.randint(Random(), 1, 3)
-    escolhas.insert(1, jogadaComputador)
-    print('Escolha do Computador: ' + tipoJogadas[jogadaComputador - 1] + '\n')
+    escolhas.insert(0, jogadaComputador)
+    print('Escolha do Computador 1: ' + tipoJogadas[jogadaComputador - 1] + '\n')
 
-    interface.escolhaJogada()
-
-    jogadaComputador = Random.randint(Random(), 1, 3)
-    escolhas.insert(1, jogadaComputador)
-    print('Escolha do Computador: ' + tipoJogadas[jogadaComputador - 1] + '\n')
+    jogadaComputador2 = Random.randint(Random(), 1, 3)
+    escolhas.insert(1, jogadaComputador2)
+    print('Escolha do Computador 2: ' + tipoJogadas[jogadaComputador2 - 1] + '\n')
 
     interface.ganhador(escolhas, 3)
 

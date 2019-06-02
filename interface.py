@@ -55,16 +55,20 @@ def escolhaJogada():
           '┗-----┵---------------------------┙\n')
 
 
-
 def ganhador(escolhas, tipoJogo):
+    statusJogada = ['Empate', 'Jogador 1', 'Jogador 2']
+
     print("\n" * 30)
     if tipoJogo == 2:
-        statusJogada.insert(2, 'Computador')
+        statusJogada.remove('Jogador 1')
+        statusJogada.insert(1, 'Computador 1')
     elif tipoJogo == 3:
-        statusJogada.insert(2, 'Computador 1')
-        statusJogada.insert(3, 'Computador 2')
+        statusJogada.remove('Jogador 1')
+        statusJogada.insert(1, 'Computador 1')
+        statusJogada.remove('Jogador 2')
+        statusJogada.insert(2, 'Computador 2')
 
     if functions.avaliarJogada(escolhas) != 0:
-        print(functions.statusJogada[functions.avaliarJogada(escolhas)] + ' GANHOU!')
+        print(statusJogada[functions.avaliarJogada(escolhas)] + ' GANHOU!')
     else:
-        print(functions.statusJogada[functions.avaliarJogada(escolhas)])
+        print(statusJogada[functions.avaliarJogada(escolhas)])
