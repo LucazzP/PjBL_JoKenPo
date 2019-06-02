@@ -19,20 +19,33 @@ def msgBemVindo():
           '┗-----┵---------------------------┙\n')
 
 
-def escolherTipoJogo():
-    print('┍-----┭---------------------------┑\n'
-          '| Num |  Tipo de Jogo             |\n'
-          '┝-----┽---------------------------┥\n'
-          '|  1  |  Humano x Humano          |\n'
-          '|  2  |  Humano x Computador      |\n'
-          '|  3  |  Computador x Computador  |\n'
-          '┗-----┵---------------------------┙\n')
+def escolherTipoJogo(he):
+    teste = he
+    if teste >= 1:
+        print('┍-----┭---------------------------┑\n'
+              '| Num |  Tipo de Jogo             |\n'
+              '┝-----┽---------------------------┥\n'
+              '|  1  |  Humano x Humano          |\n'
+              '|  2  |  Humano x Computador      |\n'
+              '|  3  |  Computador x Computador  |\n'
+              '|  4  |  Histórico de Partida     |\n'
+              '┗-----┵---------------------------┙\n')
+    else:
+        print('┍-----┭---------------------------┑\n'
+              '| Num |  Tipo de Jogo             |\n'
+              '┝-----┽---------------------------┥\n'
+              '|  1  |  Humano x Humano          |\n'
+              '|  2  |  Humano x Computador      |\n'
+              '|  3  |  Computador x Computador  |\n'
+              '┗-----┵---------------------------┙\n')
 
     escolha = int(input('Escolha o tipo de jogo: \n'))
+
     return escolha
 
 
 def escolhaJogada():
+    print("\n" * 30)
     print('┍-----┭---------------------------┑\n'
           '| Num |  Escolha sua jogada!      |\n'
           '┝-----┽---------------------------┥\n'
@@ -42,7 +55,9 @@ def escolhaJogada():
           '┗-----┵---------------------------┙\n')
 
 
+
 def ganhador(escolhas, tipoJogo):
+    print("\n" * 30)
     if tipoJogo == 2:
         statusJogada.insert(2, 'Computador')
     elif tipoJogo == 3:
