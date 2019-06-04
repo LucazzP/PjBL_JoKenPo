@@ -4,6 +4,9 @@ import interface
 
 escolhas = []
 tipoJogadas = ['Pedra', 'Papel', 'Tesoura']
+historicoPartidas = []
+historicoJogadores = [[0,0,0], [0,0,0], [0,0,0], [0,0,0]]
+
 
 def avaliarJogada(escolhas):
     if escolhas[0] == escolhas[1]:
@@ -57,5 +60,36 @@ def jogoTipo3():
 
     interface.ganhador(escolhas, 3)
 
-def jogoTipo4():
-    lala = 1
+
+def adicionarAoHistorico(statusJogada, ganhador):
+    historicoPartidas.append([escolhas[0], escolhas[1], ganhador])
+
+    if statusJogada[1] == 'Jogador 1':
+        jogador1 = historicoJogadores[0]
+        historicoJogadores[0] = addHistorico(statusJogada[1], ganhador, jogador1)
+    if statusJogada[2] == 'Jogador 2':
+        jogador1 = historicoJogadores[1]
+        historicoJogadores[1] = addHistorico(statusJogada[2], ganhador, jogador1)
+    if statusJogada[1] == 'Computador 1':
+        jogador1 = historicoJogadores[2]
+        historicoJogadores[2] = addHistorico(statusJogada[1], ganhador, jogador1)
+    if statusJogada[2] == 'Computador 2':
+        jogador1 = historicoJogadores[3]
+        historicoJogadores[3] = addHistorico(statusJogada[2], ganhador, jogador1)
+
+
+def addHistorico(jogador, ganhador, jogador1):
+    ganhou = 0
+    empate = 0
+
+    if jogador == ganhador:
+        ganhou = 1
+    elif ganhador == 'Empate':
+        empate = 1
+
+    try:
+        jogador1 = [jogador1[0] + 1, jogador1[1] + ganhou, jogador1[2] + empate]
+    except:
+        jogador1 = [1, ganhou, empate]
+
+    return  jogador1
