@@ -83,7 +83,7 @@ def historico():
 
     #Interface com formatação para os valores serem colocados nos devidos lugares (Qtd de jogos/vitorias/empates e % de vitória)
     print('┍--------------┭-------┭-----------┭---------┭-----------┑\n'
-          '| Player       | Jogos | Vitaorias | Empates | % Vitoria  |\n'
+          '| Player       | Jogos | Vitorias | Empates | % Vitoria  |\n'
           '┝--------------┽-------┽-----------┽---------┽-----------┥\n'                                                    
           '| Jogador 1    |    {}  |     {}    |     {}   |    {:.2f} %  |\n'
           '| Jogador 2    |    {}  |     {}    |     {}   |    {:.2f} %  |\n'
