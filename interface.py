@@ -6,7 +6,7 @@ import functions
 statusJogada = ['Empate', 'Jogador 1', 'Jogador 2']
 tipoJogadas = ['Pedra', 'Papel', 'Tesoura']
 
-
+# Mensagem de boas-vindas
 def msgBemVindo():
     print('┍---------------------------------┑\n'
           '|      BEM VINDO AO JOKENPO!      |\n'
@@ -18,9 +18,10 @@ def msgBemVindo():
           '|  3  |  Pedro Henrique Lucho     |\n'
           '┗-----┵---------------------------┙\n')
 
-
+#Interface de escolha do tipo de jogo
 def escolherTipoJogo(he):
     estatistica = he
+    #Se já foi jogado mostra a opção de histórico de partida
     if estatistica >= 1:
         print('┍-----┭-------------------------------------------┑\n'
               '| Num |  Tipo de Jogo e Configurações             |\n'
@@ -39,11 +40,12 @@ def escolherTipoJogo(he):
               '|  3  |  Computador x Computador  |\n'
               '┗-----┵---------------------------┙\n')
 
+    #Fazer a escolha
     escolha = int(input('Escolha o tipo de jogo: \n'))
 
     return escolha
 
-
+#Interface para escolher a jogada
 def escolhaJogada():
     print('┍-----┭---------------------------┑\n'
           '| Num |  Escolha sua jogada!      |\n'
@@ -53,18 +55,23 @@ def escolhaJogada():
           '|  3  |  Tesoura                  |\n'
           '┗-----┵---------------------------┙\n')
 
-
+#Histórico
 def historico():
-    tipoJogadores = ['Jogador 1', 'jogador 2', 'Computador 1', 'computador 2', 'Empate']
+    #Vetores com os jogadores / resultado  
+    tipoJogadores = ['Jogador 1', 'Jogador 2', 'Computador 1', 'Computador 2', 'Empate']
+    #Vetor das jogadas possíveis
     tipoJogadas = ['Pedra', 'Papel', 'Tesoura']
+    #Variável para não ter que ficar importando toda hora
     historicoJogadores = functions.historicoJogadores
     historicoPartidas = functions.historicoPartidas
-
+    
+    #Valores iniciais de vitória para cada jogador
     jogador1P = 0
     jogador2P = 0
     computador1P = 0
     computador2P = 0
 
+    #Porcentagem de vitória 
     if historicoJogadores[0][0] != 0:
         jogador1P = (historicoJogadores[0][1] / historicoJogadores[0][0]) * 100
     if historicoJogadores[1][0] != 0:
@@ -74,9 +81,10 @@ def historico():
     if historicoJogadores[3][0] != 0:
         computador2P = (historicoJogadores[3][1] / historicoJogadores[3][0]) * 100
 
+    #Interface com formatação para os valores serem colocados nos devidos lugares (Qtd de jogos/vitorias/empates e % de vitória)
     print('┍--------------┭-------┭-----------┭---------┭-----------┑\n'
-          '| Player       | Jogos | Vitorias | Empates | % Vitoria |\n'
-          '┝--------------┽-------┽-----------┽---------┽-----------┥\n'
+          '| Player       | Jogos | Vitaorias | Empates | % Vitoria  |\n'
+          '┝--------------┽-------┽-----------┽---------┽-----------┥\n'                                                    
           '| Jogador 1    |    {}  |     {}    |     {}   |    {:.2f} %  |\n'
           '| Jogador 2    |    {}  |     {}    |     {}   |    {:.2f} %  |\n'
           '| Computador 1 |    {}  |     {}    |     {}   |    {:.2f} %  |\n'
@@ -88,12 +96,14 @@ def historico():
         historicoJogadores[3][0], historicoJogadores[3][1], historicoJogadores[3][2], computador2P,
     ))
 
+    #Interface com formatação para os valores serem colocados nos devidos lugares (Tipo de jogadas feitas pelos jogadores e ganhador)
     print('┍--------------┭------------┭------------┑\n'
           '| Jogador 1    | Jogador 2 |  Ganhador  |\n'
           '┝--------------┽-----------┽------------┥')
-
-    for historico in historicoPartidas:
-        print('|  {}      | {}   |  {}  |'.format(
+    
+    #Cada jogo uma linha
+    for historico in historicoPartidas:  
+        print('|  {}     |  {}     |  {}  |'.format(
             tipoJogadas[historico[0] - 1], tipoJogadas[historico[1] - 1], historico[2]
         ))
 
@@ -103,15 +113,19 @@ def historico():
 def ganhador(escolhas, tipoJogo):
     statusJogada = ['Empate', 'Jogador 1', 'Jogador 2']
 
+    #Humano x Computador
     if tipoJogo == 2:
         statusJogada.remove('Jogador 1')
         statusJogada.insert(1, 'Computador 1')
+    
+    #Computador x Computador
     elif tipoJogo == 3:
         statusJogada.remove('Jogador 1')
         statusJogada.insert(1, 'Computador 1')
         statusJogada.remove('Jogador 2')
         statusJogada.insert(2, 'Computador 2')
 
+    #Mostrar quem ganhou
     ganhador = statusJogada[functions.avaliarJogada(escolhas)]
 
     if functions.avaliarJogada(escolhas) != 0:
@@ -119,4 +133,5 @@ def ganhador(escolhas, tipoJogo):
     else:
         print(ganhador)
 
+    #Enviar para o histório quem ganhou
     functions.adicionarAoHistorico(statusJogada, ganhador)
